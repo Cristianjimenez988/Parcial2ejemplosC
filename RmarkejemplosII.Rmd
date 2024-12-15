@@ -1,0 +1,58 @@
+---
+title: "Ejemplos en Rmarkdown Parcial"
+author: "Cristian Jiménez"
+date: "2024-12-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##1 EJEMPLO: R Markdawn
+
+#reactividad de los metales
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+metales <- data.frame(
+  Metal = c("Sodio", "Magnesio", "Cobre", "Aluminio", "Hierro"),
+  Reactividad = c(9, 7, 3, 8, 6),
+  Temperatura = c(300, 400, 500, 600, 350)
+)
+```
+
+```{r}
+ggplot(metales, aes(x = Temperatura, y = Reactividad, color = Metal)) +
+  geom_point(size = 4) +
+  labs(title = "Reactividad de Metales según Temperatura",
+       x = "Temperatura (°C)",
+       y = "Reactividad (Escala de 1 a 10)") +
+  scale_color_manual(values = c("Sodio" = "red", 
+                                "Magnesio" = "blue", 
+                                "Cobre" = "green", 
+                                "Aluminio" = "purple", 
+                                "Hierro" = "orange"))
+```
+
+#EJEMPLO 2: R markdawn
+#análisis efecto invernadero
+```{r}
+efecto_invernadero <- data.frame(
+  Año = 2000:2020,
+  Concentracion_CO2 = c(369, 373, 379, 384, 390, 396, 400, 405, 412, 417, 422, 428, 433, 440, 445, 451, 457, 463, 469, 475, 480),
+  Temperatura = c(14.0, 14.1, 14.2, 14.4, 14.5, 14.6, 14.7, 14.8, 15.0, 15.1, 15.2, 15.3, 15.4, 15.5, 15.7, 15.8, 15.9, 16.1, 16.2, 16.3, 16.4)
+)
+```
+```{r}
+ggplot(efecto_invernadero, aes(x = Concentracion_CO2, y = Temperatura)) +
+  geom_line(color = "blue", size = 1.5) +
+  geom_point(color = "red", size = 3) +
+  labs(title = "Relación entre CO2 y Temperatura Global",
+       x = "Concentración de CO2 (ppm)",
+       y = "Temperatura Media Global (°C)")
+```
+
